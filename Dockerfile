@@ -1,6 +1,8 @@
 # Base Image to use
 FROM python:3.10-slim
 
+RUN apt-get update --fix-missing && apt-get install -y --fix-missing build-essential
+
 # Set the working directory
 WORKDIR /app
 
@@ -8,7 +10,7 @@ WORKDIR /app
 COPY . /app
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Expose port 8080
 EXPOSE 8080
